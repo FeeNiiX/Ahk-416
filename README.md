@@ -1,1 +1,1 @@
-<img alt="G36C" src="[https://pt.wikipedia.org/wiki/Ficheiro:Gewehr_G36_noBG.jpg](https://upload.wikimedia.org/wikipedia/commons/e/ec/Gewehr_G36_noBG.jpg)https://upload.wikimedia.org/wikipedia/commons/e/ec/Gewehr_G36_noBG.jpg"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Gewehr_G36_noBG.jpg"/>
