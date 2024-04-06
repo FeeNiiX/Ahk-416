@@ -1,22 +1,20 @@
 ﻿#Requires AutoHotkey v2.0
-#SingleInstance Force												; so you quickly run it without warning of multiple scripts with the same name
+#SingleInstance Force
 
-global cps := 15													; The cps it starts with
-on  := False														; IT STARTS OFF, you have to press Ctrl + Q to start it
+global cps := 15
+global on  := False
 
-^q:: {																; The toggle
+^q:: {
  Global on := !on
  SoundBeep 1000 + 500 * on
 }
 
-^e:: {																; Ctrl + Alt + XButton2 opens a little window to set you the global variable "cps" so
+!XButton2:: {
 	IB := InputBox(,, "w100 h75")
 	global cps := IB.Value
 }
 
-#HotIf on															; This is like what the script runs when the on variable "on" is "True"
-
-F12::quincy(3000, ExitApp)
+#HotIf on
 
 LButton:: {
 	start := A_TickCount, clicks := 0
@@ -26,9 +24,11 @@ LButton:: {
 	}
 }
 
-quincy(beep, cmd) {													; Goofy ahh function i made it to understand how a function works very interesting wow such coding
+F12::quincy(3000, ExitApp)
+
+quincy(beep, cmd) {
 	SoundBeep beep
 	cmd
 }
 
-#HotIf																; Everything below this line is what the script run when the variable "on" is False
+#HotIf
