@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0
 #MaxThreadsPerHotkey 2
+SendMode "Event"
 
 toggle := 0
 
@@ -31,6 +32,28 @@ AntiAfk()
 	Sleep 250
 	;WinActivate previous_window
 	BlockInput 0
+}
+
+;Teleporting
+
+#HotIf WinActive("Roblox")
+
+XButton2::{
+MouseClick "left", 163, 364
+Sleep 100
+MouseClick "left", 970, 225
+}
+
+XButton1::{
+MouseClick "left", 163, 364
+Sleep 100
+MouseClick "left", 830, 225
+}
+
+E::{
+MouseGetPos &x, &y
+MouseClick "left", 163, 364
+MouseMove x, y
 }
 
 ^K::{
