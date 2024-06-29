@@ -1,15 +1,15 @@
 #Requires AutoHotkey v2.0
 #MaxThreadsPerHotkey 2
 SendMode "Event"
+SetDefaultMouseSpeed 2
 
 toggle := 0
 
 ^T::{
 global
 toggle := !toggle
-if (toggle){
+if (toggle) {
 	AntiAfk()
-	SoundBeep
 	SetTimer AntiAfk, 19*60*1000
 }
 else{
@@ -17,56 +17,55 @@ else{
 	SetTimer AntiAfk, 0
 }}
 
-AntiAfk()
-{
+AntiAfk() {
 	SoundBeep
 	SoundBeep
 	SoundBeep
-	BlockInput 1
 	previous_window := WinGetID("A")
 	WinActivate "Roblox"
 	Sleep 250
-	Send "{Space Down}"
+	SendInput "{Space Down}"
 	Sleep 125
-	Send "{Space Up}"
+	SendInput "{Space Up}"
 	Sleep 250
-	;WinActivate previous_window
-	BlockInput 0
+	WinActivate previous_window
 }
 
 ;Teleporting
 
 #HotIf WinActive("Roblox")
 
-XButton2::{
+XButton2:: {
 MouseClick "left", 163, 364
 Sleep 100
 MouseClick "left", 970, 225
 }
 
-XButton1::{
+XButton1:: {
 MouseClick "left", 163, 364
 Sleep 100
 MouseClick "left", 830, 225
 }
 
-E::{
++T:: {
 MouseGetPos &x, &y
 MouseClick "left", 163, 364
 MouseMove x, y
 }
 
-^K::{
+#HotIf
+
+^K:: {
 SoundBeep
 ExitApp
 }
 
-^R::{
+^R:: {
 SoundBeep
 Reload
 }
 
-^P::{
+^P:: {
 SoundBeep
 Pause
 }
