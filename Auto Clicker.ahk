@@ -1,15 +1,17 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance Force
 
-global cps := 20
-global tps := 30
+; --------------- Variables ---------------
+
+global cps := 15
 global on  := False
+global clicker := False
 global space := False
-global licker := False
+global customa := False
 
 ^q:: {
- Global on := !on
- SoundBeep 500 + 200 * on
+ global on := !on
+ SoundBeep 400 + 200 * on
 }
 
 ^e:: {
@@ -27,40 +29,58 @@ LButton:: {
 	}
 }
 
-Space:: {
-	Start := A_TickCount, Clicks := 0
-	While GetKeyState(ThisHotkey, 'P') {
-		SendInput "{Space}"
-		Sleep Start - A_TickCount + 1000 * ++Clicks / tps
-	}
-}
-
 #HotIf
 
-^t:: {
-SoundBeep
-	global space := !space
-	if (space) {
-		Send "{Space down}"
-	}
-	else {
-		Send "{Space up}"
-	}
-}
+; --------------- Binds ---------------
 
 ^r:: {
 SoundBeep
-	global licker := !licker
-	if (licker)
+	global space := !space
+	if (space)
+		SetTimer AutoJump, 40
+	else {
+		SetTimer AutoJump, 0
+	}
+}
+
+^t:: {
+SoundBeep
+	global clicker := !clicker
+	if (clicker)
 		SetTimer AutoClicker, 66
 	else {
 		SetTimer AutoClicker, 0
 	}
 }
 
-AutoClicker() {
-Click
+^y:: {
+SoundBeep
+	global customa := !customa
+	if (customa) {
+		Send "{Right down}"
+		SetTimer Custom, 50
+	} else {
+		Send "{Right up}"
+		SetTimer Custom, 0
+	}
 }
+
+; --------------- Functions ---------------
+
+AutoClicker() {
+;	Send "{R}"
+	Click
+}
+
+AutoJump() {
+	Send "{Space}"
+}
+
+Custom() {
+	Click
+}
+
+; --------------- Quitter ---------------
 
 F12::quincy(750, ExitApp)
 F10::quincy(500, Reload)
