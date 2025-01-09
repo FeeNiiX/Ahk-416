@@ -2,9 +2,9 @@
 
 on := True
 
-!s:: {
- Global on := !on
- SoundBeep 500 + 250 * on
+!q:: {
+    Global on := !on
+    SoundBeep 500 + 250 * on
 }
 
 #HotIf on

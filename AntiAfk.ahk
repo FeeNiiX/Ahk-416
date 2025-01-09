@@ -3,19 +3,19 @@
 SendMode "Event"
 SetDefaultMouseSpeed 2
 
-toggle := 0
+global toggle := False
 
 ^T::{
-global
-toggle := !toggle
+global toggle := !toggle
 if (toggle) {
 	AntiAfk()
 	SetTimer AntiAfk, 19*60*1000
 }
-else{
+else {
 	SoundBeep
 	SetTimer AntiAfk, 0
-}}
+	}
+}
 
 AntiAfk() {
 	SoundBeep
@@ -31,41 +31,13 @@ AntiAfk() {
 	WinActivate previous_window
 }
 
-;Teleporting
-
-#HotIf WinActive("Roblox")
-
-XButton2:: {
-MouseClick "left", 163, 364
-Sleep 100
-MouseClick "left", 970, 225
-}
-
-XButton1:: {
-MouseClick "left", 163, 364
-Sleep 100
-MouseClick "left", 830, 225
-}
-
-+T:: {
-MouseGetPos &x, &y
-MouseClick "left", 163, 364
-MouseMove x, y
-}
-
 #HotIf
 
-^K:: {
-SoundBeep
-ExitApp
-}
+F12::quit(750, ExitApp)
+F10::quit(500, Reload)
+F8::quit(250, Pause)
 
-^R:: {
-SoundBeep
-Reload
-}
-
-^P:: {
-SoundBeep
-Pause
+quit(beep, cmd) {
+	SoundBeep beep
+	cmd
 }

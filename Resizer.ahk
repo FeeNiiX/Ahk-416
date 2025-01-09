@@ -4,21 +4,18 @@
 ; ^ = Ctrl
 ; ! = Alt
 
-; 960x540
-
+; 960x540 = Ctrl + PgDn
 ^PgDn:: {
 	WinMove ,, 960, 540, "A"
 }
 
-; Centers the window
-
+; Centers the window = Shift + PgDn
 +PgDn:: {
     WinGetPos ,, &Width, &Height, "A"
     WinMove (A_ScreenWidth/2)-(Width/2), (A_ScreenHeight/2)-(Height/2),,, "A"
 }
 
-; Set your custom size
-
+; Set your custom size = Alt + PgDn
 !PgDn:: {
 	IB1 := InputBox(,, "w100 h75")
 	IB2 := InputBox(,, "w100 h75")
@@ -32,33 +29,27 @@
 			WinMove ,, IB1.Value, IB2.Value, "A"
 }
 
-; Presets
-; Shift
+; Presets = Shift + Arrows
 
-; Most left
-
+; Most Left
 +Left::WinMove -7,,,, "A"
 
 ; Most Up
-
 +Up::WinMove ,0,,, "A"
 
 ; Most Down
-
 +Down:: {
 WinGetPos ,, &Width, &Height, "A"
 WinMove ,(A_ScreenHeight)-(Height)-40,,, "A"
 }
 
 ; Most Right
-
 +Right:: {
 WinGetPos ,, &Width, &Height, "A"
 WinMove (A_ScreenWidth)-(Width)+7,,,, "A"
 }
 
-; Resizes pixel by pixel
-; Alt
+; Resizes pixel by pixel = Alt + Arrows
 
 !Left:: ResizeActiveWindowBy(-1, 0)
 !Right:: ResizeActiveWindowBy(+1, 0)
@@ -75,8 +66,7 @@ ResizeActiveWindowBy(SW, SH) {
     WinMove ,, W + SW, H + SH, "A"
 }
 
-; Moves pixel by pixel
-; Ctrl
+; Moves pixel by pixel = Ctrl + Arrows
 
 ^Left::MoveActiveWindowBy(-1, 0)
 ^Right::MoveActiveWindowBy(+1, 0)

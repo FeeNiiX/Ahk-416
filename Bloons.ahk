@@ -7,5 +7,3 @@ Click 1430, 930
 Sleep 15
 MouseMove xp, yp
 }
-
-F10::ExitApp

@@ -4,10 +4,9 @@
 ; --------------- Variables ---------------
 
 global cps := 15
-global on  := False
-global clicker := False
+global autoclicker  := False
+global afkclicker := False
 global space := False
-global customa := False
 
 ^q:: {
  global on := !on
@@ -15,11 +14,11 @@ global customa := False
 }
 
 ^e:: {
-	IB := InputBox(,, "w100 h75")
+	IB := InputBox("How fast should it click in CPS", "CPS", "w100 h100")
 	global cps := IB.Value
 }
 
-#HotIf on
+#HotIf autoclicker
 
 LButton:: {
 	Start := A_TickCount, Clicks := 0
@@ -29,46 +28,36 @@ LButton:: {
 	}
 }
 
+; Thanks to a guy named mikeyww for this code at autohotkey forums "he might be a moderator or something"
+; This somehow makes the autoclicker actually click at the speed you set it to
+
 #HotIf
 
 ; --------------- Binds ---------------
 
 ^r:: {
 SoundBeep
-	global space := !space
-	if (space)
-		SetTimer AutoJump, 40
+	global afkclicker := !afkclicker
+	if (afkclicker)
+		SetTimer AutoClickero, 1000 / cps
 	else {
-		SetTimer AutoJump, 0
+		SetTimer AutoClickero, 0
 	}
 }
 
 ^t:: {
 SoundBeep
-	global clicker := !clicker
-	if (clicker)
-		SetTimer AutoClicker, 66
+	global space := !space
+	if (space)
+		SetTimer AutoJump, 1000 / cps
 	else {
-		SetTimer AutoClicker, 0
-	}
-}
-
-^y:: {
-SoundBeep
-	global customa := !customa
-	if (customa) {
-		Send "{Right down}"
-		SetTimer Custom, 50
-	} else {
-		Send "{Right up}"
-		SetTimer Custom, 0
+		SetTimer AutoJump, 0
 	}
 }
 
 ; --------------- Functions ---------------
 
-AutoClicker() {
-;	Send "{R}"
+AutoClickero() {
 	Click
 }
 
@@ -76,16 +65,14 @@ AutoJump() {
 	Send "{Space}"
 }
 
-Custom() {
-	Click
-}
+; --------------- Quit ---------------
 
-; --------------- Quitter ---------------
+F12::quit(750, ExitApp)
+F10::quit(500, Reload)
 
-F12::quincy(750, ExitApp)
-F10::quincy(500, Reload)
-
-quincy(beep, cmd) {
+quit(beep, cmd) {
 	SoundBeep beep
 	cmd
 }
+
+; I wish I knew how to make it so anyone could easily make his own function so it was a all-porpuse macro or something but I am not perfect ;(

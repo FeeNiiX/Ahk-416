@@ -6,58 +6,63 @@
 
 ! = Alt
 
-"+" = Shift
+∔ = Shift
 
-[More of this](https://www.autohotkey.com/docs/v2/Hotkeys.htm)
+[More](https://www.autohotkey.com/docs/v2/Hotkeys.htm)
 
 [Keycode names](https://www.autohotkey.com/docs/v2/KeyList.htm)
 
-# Bloons.ahk
+## MouseMove.ahk
+
+Moves the mouse 1 pixel at a time
+
+## Scroll.ahk
+
+Scroll Faster
+
+## AntiAfk.ahk
+
+Ctrl + T to toggle
+
+For Roblox
+
+## Bloons.ahk
 
 It a script that snaps, clicks and then come back.
 
-It is named bloons because i use it to quickly assing monkey knowledge at bloons. [see more](https://github.com/FeeNiiX/LeeKnow/tree/main)
+It is named bloons because I use it to quickly assing monkey knowledge at bloons. [see more](https://github.com/FeeNiiX/LeeKnow)
 
-# Rebind.ahk
+## Rebind.ahk
 
 Its how you rebind your keyboard's keys in autohotkey, the simplest thing ever.
 
-I use it because of my short keyboard that i bought
+I use it because of my short keyboard that I bought
 
-# Resizer.ahk
+## Resizer.ahk
 
-Damn, the best ahk script i ever made (not all by myself obviously)
+Damn, the best ahk script I've ever made (not all by myself obviously)
 
 It should be a whole separeted repository of how beautiful it is
 
-It can resize windows precisely with keybinds.
+It can resize windows precisely with keybinds, one pixel at a time or you can use the presets
 
-One pixel at a time or you can use the presets, the code is there so you can change the keybinds and add your on presets and shit
+## Auto Clicker.ahk
 
-I already commented too much so imma leave the most difficult script to not be commented
+Thanks to [mikeyww](https://www.autohotkey.com/boards/memberlist.php?mode=viewprofile&u=59977&sid=1d05da44c8259a0532314d7eb7d9d279)
 
-# Auto Clicker.ahk
-
-I got it from someone by searching autohotkey auto clicker script in google.
-
-But i made so Ctrl + Alt + Mouse2(the next/redo) you can change your cps in real time without coding and re-running the script
-
-This script has something special because it actually clicks in the cps you set it too exactly
+This script actually clicks in the cps you set it too exactly
 
 As if you only do a simpler
 
-```
+```AHK
 LButton:: {
  While GetKeyState(ThisHotkey, 'P') {
   Click
   Sleep 50
  }
- 
 ```
 
-It should click at 20 cps, but if you would test for example at [this site that doesnt lag with fast clicks](https://cookie.riimu.net/speed/)
-
-It might not do 20 cps exactly idk, i think it has to do with the Windows Timer Resolution or smth
+It should click at 20 cps but it doesn't
 
 When you start changing the sleep values many stays the same cps and then all of a sudden it actually changes the speed to another different sleep time
 
@@ -68,9 +73,10 @@ Basically this
 66ms until 50ms = 15 cps
 49ms until 25 = 20 cps
 25ms until 16 = 30+ cps
-15ms (max) = 64 cps
+15ms = 64 cps
+1ms = it really tries to do 1000cps
 ```
 
 The problem is that 100ms is different from 99 or 90 and much much more from 67
 
-[What i've said but in antique egyptian](https://www.autohotkey.com/boards/viewtopic.php?t=87119)
+[This explanation](https://www.autohotkey.com/boards/viewtopic.php?t=87119)
