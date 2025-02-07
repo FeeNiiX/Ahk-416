@@ -3,18 +3,28 @@
 
 ; --------------- Variables ---------------
 
-global cps := 15
+global cps := 10
 global autoclicker  := False
 global afkclicker := False
-global space := False
+global keyclicker := False
+
+MsgBox "
+(
+	Ctrl + Q to toggle the trigger clicker
+	Ctrl + E to set the CPS
+	Ctrl + R to toggle the auto clicker
+	Ctrl + T to toggle the key clicker
+	F10 to reload the script
+	F12 to exit the script
+	)"
 
 ^q:: {
- global on := !on
- SoundBeep 400 + 200 * on
+ global autoclicker := !autoclicker
+ SoundBeep 400 + 200 * autoclicker
 }
 
 ^e:: {
-	IB := InputBox("How fast should it click in CPS", "CPS", "w100 h100")
+	IB := InputBox("How fast should it click in CPS",, "w100 h100")
 	global cps := IB.Value
 }
 
@@ -36,8 +46,8 @@ LButton:: {
 ; --------------- Binds ---------------
 
 ^r:: {
-SoundBeep
 	global afkclicker := !afkclicker
+	SoundBeep 400 + 200 * afkclicker
 	if (afkclicker)
 		SetTimer AutoClickero, 1000 / cps
 	else {
@@ -46,12 +56,12 @@ SoundBeep
 }
 
 ^t:: {
-SoundBeep
-	global space := !space
-	if (space)
-		SetTimer AutoJump, 1000 / cps
+	global keyclicker := !keyclicker
+	SoundBeep 400 + 200 * keyclicker
+	if (keyclicker)
+		SetTimer Key, 1000 / cps
 	else {
-		SetTimer AutoJump, 0
+		SetTimer Key, 0
 	}
 }
 
@@ -61,8 +71,10 @@ AutoClickero() {
 	Click
 }
 
-AutoJump() {
-	Send "{Space}"
+;TODO: make it so you can set the key to click
+
+Key() {
+	Send "F"
 }
 
 ; --------------- Quit ---------------

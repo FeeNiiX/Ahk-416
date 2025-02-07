@@ -1,8 +1,15 @@
 ﻿#Requires AutoHotkey v2.0
 
-; + = Shift
-; ^ = Ctrl
-; ! = Alt
+MsgBox "
+(
+Ctrl + PgDn = 960x540
+Shift + PgDn = Center
+Alt + PgDn = Custom Size
+Shift + Arrows = Window Positions Presets
+Alt + Arrows = Resize Pixel by Pixel
+Ctrl + Arrows = Move Pixel by Pixel
+)"
+;copilot cooked here
 
 ; 960x540 = Ctrl + PgDn
 ^PgDn:: {
@@ -28,8 +35,8 @@
 		else
 			WinMove ,, IB1.Value, IB2.Value, "A"
 }
-
-; Presets = Shift + Arrows
+; ------------------------------------------------
+; Window Positions Presets = Shift + Arrows
 
 ; Most Left
 +Left::WinMove -7,,,, "A"
@@ -48,7 +55,9 @@ WinMove ,(A_ScreenHeight)-(Height)-40,,, "A"
 WinGetPos ,, &Width, &Height, "A"
 WinMove (A_ScreenWidth)-(Width)+7,,,, "A"
 }
+; ------------------------------------------------
 
+; ------------------------------------------------
 ; Resizes pixel by pixel = Alt + Arrows
 
 !Left:: ResizeActiveWindowBy(-1, 0)
@@ -65,7 +74,9 @@ ResizeActiveWindowBy(SW, SH) {
     WinGetPos ,, &W, &H, "A"
     WinMove ,, W + SW, H + SH, "A"
 }
+; ------------------------------------------------
 
+; ------------------------------------------------
 ; Moves pixel by pixel = Ctrl + Arrows
 
 ^Left::MoveActiveWindowBy(-1, 0)
@@ -82,3 +93,4 @@ MoveActiveWindowBy(SX, SY) {
     WinGetPos &X, &Y,,, "A"
     WinMove X + SX, Y + SY,,, "A"
 }
+; ------------------------------------------------
