@@ -1,9 +1,18 @@
 ﻿#Requires AutoHotkey v2.0
 
-on := True
+MsgBox "
+(
+    Press Ctrl + S to toggle the scroll script
+    Press Left Shift to scroll up
+    Press Left Control to scroll down
+    Press Up to scroll up
+    Press Down to scroll down
+)"
 
-!q:: {
-    Global on := !on
+global on := True
+
+^s:: {
+    global on := !on
     SoundBeep 500 + 250 * on
 }
 
@@ -29,5 +38,3 @@ Up::WheelUp
 Down::WheelDown
 
 #HotIf
-
-^+R::Reload

@@ -3,7 +3,7 @@
 
 ; --------------- Variables ---------------
 
-global cps := 10
+global cps := 15
 global autoclicker  := False
 global afkclicker := False
 global keyclicker := False
@@ -37,9 +37,6 @@ LButton:: {
 		Sleep Start - A_TickCount + 1000 * ++Clicks / cps
 	}
 }
-
-; Thanks to a guy named mikeyww for this code at autohotkey forums "he might be a moderator or something"
-; This somehow makes the autoclicker actually click at the speed you set it to
 
 #HotIf
 

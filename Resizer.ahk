@@ -5,11 +5,16 @@ MsgBox "
 Ctrl + PgDn = 960x540
 Shift + PgDn = Center
 Alt + PgDn = Custom Size
+Ctrl + Arrows = Move Pixel by Pixel
 Shift + Arrows = Window Positions Presets
 Alt + Arrows = Resize Pixel by Pixel
-Ctrl + Arrows = Move Pixel by Pixel
 )"
 ;copilot cooked here
+
+; 1280x720 = Ctrl + PgDn
+^PgUp:: {
+	WinMove ,, 960, 540, "A"
+}
 
 ; 960x540 = Ctrl + PgDn
 ^PgDn:: {
@@ -24,8 +29,8 @@ Ctrl + Arrows = Move Pixel by Pixel
 
 ; Set your custom size = Alt + PgDn
 !PgDn:: {
-	IB1 := InputBox(,, "w100 h75")
-	IB2 := InputBox(,, "w100 h75")
+	IB1 := InputBox(,, "w96 h64")
+	IB2 := InputBox(,, "w96 h64")
 
 	if IB1.Result = "Cancel"
 		return

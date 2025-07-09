@@ -6,19 +6,31 @@ MsgBox "
 Keybinds:
 
 M - Managers
-N - Upgrades
-J - Angel Managers
-K - Angel Upgrades
+N - Angel Managers
+K - Upgrades
+J - Angel Upgrades
+S - Sacrifice
 C - Click
 X - Buy all
 )"
 
 FClick(x, y) {
 	Click x, y
-	Sleep 15
+	Sleep 30
 }
 
 #HotIf WinActive("ahk_exe adventure-capitalist.exe")
+
+S::
+{
+	Click 203, 604
+	Sleep 200
+	Click 1254, 598
+	Sleep 200
+	Click 621, 663
+	Sleep 200
+	Send "{Esc}"
+}
 
 ;Managers
 M::
@@ -28,35 +40,22 @@ M::
 	while GetKeyState("M", "P")
 	{
 		Click 700, 570
-		Sleep 15
-	}
-	Send "{Esc}"
-}
-
-;Upgrades
-N::
-{
-	Click 150, 430
-	Sleep 100
-	while GetKeyState("N", "P")
-	{
-		Click 666, 690
-		Sleep 15
+		Sleep 30
 	}
 	Send "{Esc}"
 }
 
 ;Angel Managers
-K::
+N::
 {
 	Click 200, 530
 	Sleep 100
 	Click 900, 230
 	Sleep 100
-	while GetKeyState("K", "P")
+	while GetKeyState("N", "P")
 	{
 		Click 700, 570
-		Sleep 15
+		Sleep 30
 	}
 	Send "{Esc}"
 }
@@ -64,15 +63,30 @@ K::
 ;Angel Upgrades
 J::
 {
-	Click 200, 430
-	Sleep 100
+	Click 150, 430
+	Sleep 200
 	Click 800, 230
-	Sleep 100
-	while GetKeyState("J", "P")
-	{
-		Click 666, 690
-		Sleep 15
-	}
+	Sleep 200
+	Click 1110, 540, 2
+	; while GetKeyState("J", "P")
+	; {
+	; 	Click 666, 690
+	; 	Sleep 15
+	; }
+	Send "{Esc}"
+}
+
+;Upgrades
+K::
+{
+	Click 150, 430
+	Sleep 200
+	Click 1110, 540, 2
+	; while GetKeyState("N", "P")
+	; {
+	; 	Click 666, 690
+	; 	Sleep 15
+	; }
 	Send "{Esc}"
 }
 

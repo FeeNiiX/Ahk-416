@@ -1,7 +1,8 @@
 #Requires AutoHotkey v2.0
 #MaxThreadsPerHotkey 2
 SendMode "Event"
-SetDefaultMouseSpeed 2
+
+MsgBox "Press Ctrl + T to toggle the anti-afk script"
 
 global toggle := False
 
@@ -31,13 +32,4 @@ AntiAfk() {
 	WinActivate previous_window
 }
 
-#HotIf
-
-F12::quit(750, ExitApp)
-F10::quit(500, Reload)
-F8::quit(250, Pause)
-
-quit(beep, cmd) {
-	SoundBeep beep
-	cmd
-}
+F12::ExitApp
