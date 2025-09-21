@@ -5,13 +5,14 @@ MsgBox "
 (
 Keybinds:
 
-M - Managers
-N - Angel Managers
-K - Upgrades
-J - Angel Upgrades
-S - Sacrifice
-C - Click
+W - Managers
+S - Angel Managers
+A - Angel Upgrades
+D - Upgrades
+E - Sacrifice
 X - Buy all
+C - Click
+F - Change Amouunt
 )"
 
 FClick(x, y) {
@@ -31,16 +32,7 @@ F::
 	Click 1206, 36
 }
 
-G::
-{
-	Loop 4
-	{
-		Click 1206, 36
-		Sleep 30
-	}
-}
-
-S::
+E::
 {
 	Click 111, 484
 	Sleep Slow
@@ -52,11 +44,11 @@ S::
 }
 
 ;Managers
-M::
+W::
 {
 	Click 117, 416
 	Sleep Slow
-	while GetKeyState("M", "P")
+	while GetKeyState("W", "P")
 	{
 		Click 543, 464
 		Sleep 30
@@ -65,13 +57,13 @@ M::
 }
 
 ;Angel Managers
-N::
+S::
 {
 	Click 117, 416
 	Sleep Slow
 	Click 725, 186
 	Sleep Fast
-	while GetKeyState("N", "P")
+	while GetKeyState("S", "P")
 	{
 		Click 543, 464
 		Sleep 30
@@ -80,7 +72,7 @@ N::
 }
 
 ;Angel Upgrades
-J::
+A::
 {
 	Click 113, 349
 	Sleep Slow
@@ -96,7 +88,7 @@ J::
 }
 
 ;Upgrades
-K::
+D::
 {
 	Click 113, 349
 	Sleep Slow
@@ -107,23 +99,6 @@ K::
 	; 	Sleep 15
 	; }
 	Send "{Esc}"
-}
-
-C::
-{
-	MouseGetPos &origX, &origY
-	FClick(300, 180)
-	FClick(300, 280)
-	FClick(300, 380)
-	FClick(300, 480)
-	FClick(300, 580)
-
-	FClick(760, 180)
-	FClick(760, 280)
-	FClick(760, 380)
-	FClick(760, 480)
-	FClick(760, 580)
-	MouseMove origX, origY, 0
 }
 
 X::
@@ -140,6 +115,23 @@ X::
 	FClick(840, 420)
 	FClick(840, 530)
 	FClick(840, 640)
+	MouseMove origX, origY, 0
+}
+
+C::
+{
+	MouseGetPos &origX, &origY
+	FClick(300, 180)
+	FClick(300, 280)
+	FClick(300, 380)
+	FClick(300, 480)
+	FClick(300, 580)
+
+	FClick(760, 180)
+	FClick(760, 280)
+	FClick(760, 380)
+	FClick(760, 480)
+	FClick(760, 580)
 	MouseMove origX, origY, 0
 }
 
